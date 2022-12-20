@@ -1,4 +1,11 @@
-query session /server:SERVER_NAME
-set /p input=""
+@echo off
+
+:loop
 cls
-mstsc /v:SERVER_NAME /control /shadow: %input%
+echo.
+echo Please enter the session ID:
+set /p sessionId=
+
+if not defined sessionId goto loop
+
+mstsc /v:mo-rds /control /shadow:%sessionId%
